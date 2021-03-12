@@ -5,3 +5,7 @@ node_modules
 client*
 app*
 npm-debug.log
+.yalc
+workspace.code-workspace
+yalc.lock
+package-lock.json
