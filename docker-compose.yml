@@ -13,16 +13,30 @@
 # *TODO: Step 0 is for the bcrypt binary compiled on alpine, which is required...
 #        but this step feels like an anti-pattern and a better approach should be found
 
-version: '3.7'
+version: "3.7"
 services:
   mongo:
     image: mongo:4.1
     restart: always
     volumes:
       - mdb-data:/data/db
+    ports:
+      - "27017:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME:
       MONGO_INITDB_ROOT_PASSWORD:
+      
+  wildfly:
+    image: jboss/jbpm-server-full:latest
+    hostname: wildfly
+    restart: always
+    volumes:
+      - wf-data:/data/wf
+    links:
+      - mongo
+    ports:
+      - "8080:8080"    
+      - "9990:9990"   
 
   formio:
     build: ./
@@ -41,8 +55,10 @@ services:
       NODE_CONFIG: '{"mongo": "mongodb://mongo:27017/formio"}'
       ROOT_EMAIL: admin@example.com
       ROOT_PASSWORD: CHANGEME
-    stdin_open: true  # -i
-    tty: true         # -t
+      JWT_SECRET: CHANGEME
+    stdin_open: true # -i
+    tty: true # -t
 
 volumes:
   mdb-data:
+  wf-data:
