@@ -1,5 +1,5 @@
 # docker-compose -f docker-compose-kc.yml -p keycloak up
-#
+# o bien copiarlo en el directorio keycloak-master, renombrarlo a docker-compose y docker-compose up
 version: '3'
 
 volumes:
