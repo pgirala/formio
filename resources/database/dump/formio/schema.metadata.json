@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"formio.schema"},{"v":{"$numberInt":"2"},"key":{"key":{"$numberInt":"1"}},"name":"key_1","ns":"formio.schema"}],"uuid":"58a971e8c4754dc39325f8982f23a634","collectionName":"schema"}
